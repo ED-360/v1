@@ -1,0 +1,363 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>EDO 360</title>
+
+        <link rel="stylesheet" type="text/css" href="photo-sphere-viewer/photo-sphere-viewer.min.css">
+		<style>
+		#systems
+		{
+			width:100%;
+			border:unset;
+			margin:0;
+			color:white;
+			background: rgb(40,40,40);
+			display:none;
+		}
+		#systems > div
+		{
+			width:calc(100% - 20px);
+			border:unset;
+			margin:0;
+			color:white;
+			background: rgb(60,60,60);
+			padding:10px;
+		}
+		#systems > button
+		{
+			width:100%;
+			border:unset;
+			margin:0;
+			color:white;
+			background: rgb(60,60,60);
+			padding:10px;
+		}
+		#systems > button:hover
+		{
+			background: rgb(255,1,44);
+		}
+		</style>
+    </head>
+
+    <body style="
+		width: 100%; 
+		height:100vh; 
+		margin:0;
+		display: grid;
+		grid-template-columns: 100%;">
+        <script src="js/three.js">
+		</script>
+        <script src="js/D.min.js">
+		</script>
+        <script src="js/uevent.min.js">
+		</script>
+        <script src="js/dot.min.js">
+		</script>
+        <script src="js/three-canvasrenderer.js">
+		</script>
+        <script src="js/three-devicecontrol.js">
+		</script>
+        <script src="js/three-projector.js">
+		</script>
+        <script src="photo-sphere-viewer/photo-sphere-viewer.min.js">
+		</script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js">
+		</script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+		</script>
+        <div id="systems"style="width:100%; margin:0">
+			<div>
+				Systems
+			</div>
+			<button onclick="
+				viewer.clearMarkers(); 
+				viewer.addMarker
+				(
+					{
+						id: 'GLUDGAE_WM-L_B49-2',
+						longitude: -0.077,
+						latitude: 0.4165,
+						tooltip: '✧ GLUDGAE WM-L B49-2<br>Distance: 651Ls',
+						html: '<a></a>',
+					}
+				); 
+				viewer.addMarker
+				(
+					{
+						id: 'GLUDGAE_WM-L_B49-2 1',
+						longitude: -0.0145,
+						latitude: 0.433,
+						tooltip: '☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 1<br>┝ ☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 1 A<br>┗ ☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 1 B<br>Distance: 1,123Ls ',
+						html: '<a></a>',
+					}
+				);
+				viewer.addMarker
+				(
+					{
+						id: 'GLUDGAE_WM-L_B49-2 2',
+						longitude: -0.030,
+						latitude: 0.431,
+						tooltip: '☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 2<br>Distance: 1,146Ls ',
+						html: '<a></a>',
+					}
+				);
+				viewer.addMarker
+				(
+					{
+						id: 'GLUDGAE_WM-L_B49-2_3_D',
+						longitude: 0.6,
+						latitude: 1.1,
+						tooltip: '☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 3 D<br>Distance: 2.7mm',
+						html: '<a></a>',
+					}
+				);
+				viewer.addMarker
+				(
+					{
+						id: 'GLUDGAE_WM-L_B49-2 4',
+						longitude: -0.635,
+						latitude: 0.222,
+						tooltip: '☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 4<br>┝ ☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 4 A<br>┝ ☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 4 B<br>┝ ☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 4 C<br>┝ ☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 4 D<br>┗ ☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 4 E<br>Distance: 1,353Ls ',
+						html: '<a></a>',
+					}
+				);
+				viewer.addMarker
+				(
+					{
+						id: 'GLUDGAE_WM-L_B49-2 5',
+						longitude: 1.089,
+						latitude: 0.436,
+						tooltip: '☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 5<br>┝ ☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 5 A<br>┝ ☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 5 B<br>┝ ☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 5 C<br>┝ ☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 5 D<br>┗ ☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 5 E<br>Distance: 1,261Ls ',
+						html: '<a></a>',
+					}
+				);
+				viewer.setPanorama
+				(
+					'GLUDGAE_WM-L_B49-2_3_C.jpg'
+				); 
+				viewer.setCaption
+				(
+					'☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE WM-L B49-2 3 C'
+				);">☽
+				<a style='
+					border: 1px solid #dcdcdc;
+					border-radius: 50%;
+					margin: 0px 0 -0.6px -14px;
+					width: 8px;
+					height: 8px;
+					display: inline-block;'>
+				</a> 
+				GLUDGAE WM-L B49-2 3 C
+			</button>
+			<button onclick="
+				viewer.clearMarkers(); 
+				viewer.addMarker
+				(
+					{
+						id: 'GLUDGAE_UR-L_B49-0',
+						longitude: -0.378,
+						latitude: 0.662,
+						tooltip: '✧ GLUDGAE UR-L B49-0<br>Distance: 285Ls',
+						html: '<a></a>',
+					}
+				); 
+				viewer.setPanorama
+				(
+					'GLUDGAE_UR-L_B49-0_1.jpg'
+				); 
+				viewer.setCaption
+				(
+					'☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> GLUDGAE UR-L B49-0 1'
+				);">☽
+				<a style='
+					border: 1px solid #dcdcdc;
+					border-radius: 50%;
+					margin: 0px 0 -0.6px -14px;
+					width: 8px;
+					height: 8px;
+					display: inline-block;'>
+				</a> 
+				GLUDGAE UR-L B49-0 1
+			</button>
+			<button onclick="
+				viewer.clearMarkers();  
+				viewer.setPanorama
+				(
+					'SYROOMEOU_FG-Y_G10_12_A.png'
+				); 
+				viewer.setCaption
+				(
+					'☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> SYROOMEOU FG-Y G10 12 A'
+				);">☽
+				<a style='
+					border: 1px solid #dcdcdc;
+					border-radius: 50%;
+					margin: 0px 0 -0.6px -14px;
+					width: 8px;
+					height: 8px;
+					display: inline-block;'>
+				</a> SYROOMEOU FG-Y G10 12 A
+			</button>
+			<button onclick="
+				viewer.clearMarkers(); 
+				viewer.setPanorama
+				(
+					'SAGITTARIUS_A.png'
+				); 
+				viewer.setCaption
+				(
+					'✺ SAGITTARIUS A*'
+				);">
+				✺ SAGITTARIUS A*
+			</button>
+			<button onclick="
+				viewer.clearMarkers(); 
+				viewer.addMarker
+				(
+					{
+						id: 'HD_2307_A',
+						longitude: -1.798,
+						latitude: 0.467,
+						tooltip: '✧ HD 2307 A<br>Distance: 258,236Ls',
+						html: '<a></a>',
+					}
+				);
+				viewer.addMarker
+				(
+					{
+						id: 'HD_2307_B_2',
+						longitude: -0.753,
+						latitude: 0.291,
+						tooltip: '☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> HD 2307 B 2<br>Distance: 6.5Ls',
+						html: '<a></a>',
+					}
+				); 
+				viewer.addMarker
+				(
+					{
+						id: 'HD_2307_B_2_A',
+						longitude: -0.661,
+						latitude: 0.322,
+						tooltip: '☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> HD 2307 B 2 A<br>Distance: 9.21Ls',
+						html: '<a></a>',
+					}
+				);
+				viewer.addMarker
+				(
+					{
+						id: 'HD_2307_B_2_B_1',
+						longitude: 0.47,
+						latitude: 0.565,
+						tooltip: '☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> HD 2307 B 2 B 1<br>Distance: 9.56Mm',
+						html: '<a></a>',
+					}
+				);
+				viewer.addMarker
+				(
+					{
+						id: 'HD_2307_B_2_E',
+						longitude: 0.653,
+						latitude: 0.5595,
+						tooltip: '☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> HD 2307 B 2 E<br>Distance: 14.1Ls',
+						html: '<a></a>',
+					}
+				); 
+				viewer.setPanorama
+				(
+					'HD_2307_B_2_B.jpg'
+				); 
+				viewer.setCaption
+				(
+					'☽<a style=\'border: 1px solid #dcdcdc;border-radius: 50%;margin: 0px 0 -0.6px -12.7px;width: 10px;height: 10px;display: inline-block;\'></a> HD 2307 B 2 B'
+				);">☽
+				<a style='
+					border: 1px solid #dcdcdc;
+					border-radius: 50%;
+					margin: 0px 0 -0.6px -14px;
+					width: 8px;
+					height: 8px;
+					display: inline-block;'>
+				</a> 
+				HD 2307 B 2 B
+			</button>
+			<button onclick="
+				viewer.clearMarkers(); 
+				viewer.setPanorama
+				(
+					'PSR_J0034-0721.png'
+				); 
+				viewer.setCaption
+				(
+					'✺ PSR J0034-0721'
+				);">
+				✺ PSR J0034-0721
+			</button>
+		</div>
+        <div id="viewer" style="
+			width: auto; 
+			height: 100vh; 
+			margin: 0;
+			opacity: 0;">
+		</div>
+        <script>
+            var viewer = new PhotoSphereViewer
+			(
+				{
+					container: 'viewer',
+					panorama: 'HD_2307_B_2_B2.jpg',
+					caption: "PSR J0034-0721",
+					loading_txt: "Loading...",
+					gyroscope: true,
+					time_anim: false,
+					navbar: [
+						'zoom',
+						{
+							id: 'systems',
+							title: 'Systems',
+							className: 'custom-button',
+							content: 'Systems    ',
+							onClick: function() {
+								setTimeout(function(){jQuery('#viewer').css('display', 'none')}, 1000);
+								setTimeout(function(){jQuery('#systems').css('display', 'unset')}, 1000);
+							}
+						},
+						'caption',
+						'gyroscope',
+						'markers',
+						'fullscreen'
+					],
+					markers: [
+						{
+							id: "a",
+							longitude: -0.635,
+							latitude: 0.222,
+							html: "<div style='background: red;width:1px; height:1px;'></div>",
+							tooltip: "☽ HD 2307 B 2 <br> A,<br> B,<br> C,<br> D,<br> E"
+						}
+					]
+				}
+			);
+        </script>
+		<script>	
+			setTimeout(function(){jQuery('#viewer').css('display', 'none')}, 1);
+			setTimeout(function(){jQuery('#systems').css('display', 'block')}, 1);					
+			jQuery
+			(
+				function()
+				{
+					jQuery('button').click
+					(
+						function()
+						{
+							setTimeout(function(){jQuery('#viewer').css('opacity', '1')}, 1000);
+							setTimeout(function(){jQuery('#viewer').css('display', 'unset')}, 1000);
+							setTimeout(function(){jQuery('#systems').css('display', 'none')}, 1000);		
+						}
+					);
+				}
+			);
+        </script>
+    </body>
+</html>
+
+
